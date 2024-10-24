@@ -120,41 +120,6 @@ def sample_rectified_flow(mu_0, mu_1, Sigma_0, Sigma_1, pi_0, pi_1, T, num_sampl
 
     return trajectory, drift_save, weight_save
 
-# def plot_trajectories(trajectory, plot_paths=True, plot_original=True, t=None):
-#     trajectory_np = trajectory
-#     (T, n, d) = trajectory.shape
-#     if t is None: t = T-1
-#     diff = trajectory[T-1, :, :] - trajectory[0, :, :]
-#     green = 0
-#     red = 0
-#     plt.figure(1)
-#     for i in range(n):
-#         particle_trajectory = trajectory_np[:t, i, :]
-#         if diff[i, 0]>0:
-#             if diff[i, 1]>0:
-#                 color = "red"
-#                 red = red + 1
-#             else: color = "yellow"
-#         else:
-#             if diff[i, 1]<0:
-#                 color = "purple"
-#             else:
-#                 green = green +1
-#                 color = "green"
-#         plt.scatter(trajectory_np[0, i, 0], trajectory_np[0, i, 1], alpha=0.2, color=color)
-#         if plot_paths: plt.plot(particle_trajectory[:, 0], particle_trajectory[:, 1], alpha=0.1, color=color)
-#         # print("green, red: ",green/n, red/n)
-# #    plt.scatter(trajectory_np[T-1, :, 0], trajectory_np[T-1, :, 1], label="End points", color="orange")
-#     plt.scatter(trajectory_np[t, :, 0],   trajectory_np[t, :, 1], label="End points", color="orange")
-#     if plot_original: plt.scatter(X_np[:, 0], X_np[:, 1], label="Original data points", color="blue", alpha=0.05)
-#     # plt.xlim((-10, 10))
-#     # plt.ylim((-10, 10))
-#     plt.title('Trajectories of particles over time, T={}, time={}'.format(T-1, np.round(t/T, 2)))
-#     plt.legend()
-#     plt.show()
-#     plt.close()
-#     return
-
 def plot_weights(weights, trajectory, j):
     indices = np.where(trajectory[0, :, 1]>0)[0]
 
